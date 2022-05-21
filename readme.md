@@ -1,7 +1,7 @@
 # client packages
 
 - [Tailwind and daisyui](#Tailwind)
-- [authentication](#Authentication)
+- [authentication](#authentication)
 - [react router dom](#react-router-dom)
 - [react toastify](#react-toastify)
 - [react hot toast](#hot-toast)
@@ -10,7 +10,6 @@
 - [react query](#react-query)
 - [Icons](#Icons)
 - [react day picker](#react-day-picker)
-- [react rechart](#react-rechart)
 - [image upload](#image-upload)
 
 # server packages
@@ -90,7 +89,7 @@ module.exports = {
 
 ---
 
-## [Authentication](https://github.com/CSFrequency/react-firebase-hooks/tree/master/auth)
+## [authentication](https://github.com/CSFrequency/react-firebase-hooks/tree/master/auth)
 
 ### [firebase website](https://firebase.google.com/docs?gclid=EAIaIQobChMIx76hsMfu9wIVydeWCh3F8wpZEAAYASABEgJ_IvD_BwE&gclsrc=aw.ds)
 
@@ -704,8 +703,29 @@ yarn add express cors mongodb dotenv jsonwebtoken
 - ### [express hello world api example](https://expressjs.com/en/starter/hello-world.html)
 - ### [dotenv config call](https://github.com/motdotla/dotenv#usage)
 - ### [cors usage](https://www.npmjs.com/package/cors#usage)
-  \
-  &nbsp;
+
+
+```js
+// sample code
+const express = require('express');
+const cors = require('cors');
+require('dotenv').config()
+
+const app = express()
+const port = process.env.PORT || 5000
+
+
+app.get('/', (req, res) => {
+  res.send('hello world')
+})
+
+app.listen(port, () => console.log('listening to port', port))
+
+```
+
+\
+
+&nbsp;
 
 ---
 
