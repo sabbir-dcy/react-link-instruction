@@ -125,7 +125,7 @@ import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
 const [createUserWithEmailAndPassword, cUser, cLoading, cError] =
   useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
 
-function handler(arg) {
+function handler(email,password) {
   createUserWithEmailAndPassword(email, password)
 }
 ```
@@ -138,7 +138,7 @@ import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
 const [signInWithEmailAndPassword, eUser, eLoading, eError] =
   useSignInWithEmailAndPassword(auth)
 
-function handler(arg) {
+function handler(email, password) {
   signInWithEmailAndPassword(email, password)
 }
 ```
@@ -151,7 +151,7 @@ import { useSignInWithGithub } from 'react-firebase-hooks/auth'
 const [signInWithGithub, gitUser, gitLoading, gitError] =
   useSignInWithGithub(auth)
 
-function handler(arg) {
+function handler() {
   signInWithGithub()
 }
 ```
