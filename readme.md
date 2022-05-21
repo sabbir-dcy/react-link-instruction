@@ -1,6 +1,6 @@
 # client packages
 
-- [Tailwind and daisyui](#Tailwind)
+- [Tailwind and daisyui](#tailwind)
 - [authentication](#authentication)
 - [react router dom](#react-router-dom)
 - [react toastify](#react-toastify)
@@ -42,7 +42,7 @@ yarn create react-app my-app
 - `.env.local` at root folder
 - REACT_APP_credentialName=secret key
 
-## [Tailwind](https://tailwindcss.com/docs/guides/create-react-app) & [Daisy ui](https://daisyui.com/docs/install/)
+## [tailwind](https://tailwindcss.com/docs/guides/create-react-app) & [Daisy ui](https://daisyui.com/docs/install/)
 
 ```bash
 yarn add -D tailwindcss postcss autoprefixer
