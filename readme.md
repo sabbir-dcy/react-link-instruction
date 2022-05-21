@@ -11,16 +11,30 @@
 - [Icons](#Icons)
 - [react day picker](#react-day-picker)
 - [react rechart](#react-rechart)
+- [image upload](#image-upload)
+
+# server packages
+
+- [express server setup](#express-server)
+- [mongodb get started](#mongodb-quick-start)
+
+# video notes
+
+- 76-7 (sendgrid custom email send)
+- 67-5 (pagination)
+- 63.5-4 (google map integration)
+- 69-4 (useToken custom hook)
+- 70.5 (jwt recap)
+  \
+   &nbsp;
+
+---
 
 ## create react app
 
 ```bash
 npx create-react-app my-app
-```
-
-or using yarn
-
-```bash
+#or
 yarn create react-app my-app
 ```
 
@@ -63,7 +77,7 @@ module.exports = {
 }
 ```
 
-- index.css ->
+- at index.css or App.css->
 
 ```css
 @tailwind base;
@@ -180,6 +194,8 @@ async function handler(arg) {
   await sendPasswordResetEmail(email)
   alert('Sent email')
 }
+
+// note: this hook does not give you confirmation if the email is exist or not...it says 'email sent' to any email you geive.ex- yadayada@mail.com
 ```
 
 \
@@ -290,9 +306,10 @@ toast.warning('warning')
 toast.info('information')
 toast('default toast')
 ```
+
 - ### [see more toast options](https://fkhadra.github.io/react-toastify/introduction)
-\
-&nbsp;
+  \
+  &nbsp;
 
 ---
 
@@ -318,13 +335,14 @@ fun App() {
 ```
 
 ```js
-// ussage
-import toast from 'react-hot-toast';
-toast.success('Successfully created!');
-toast.error('This is an error!');
-toast.loading('Waiting...');
-toast('Hello World');
+// usage
+import toast from 'react-hot-toast'
+toast.success('Successfully created!')
+toast.error('This is an error!')
+toast.loading('Waiting...')
+toast('Hello World')
 ```
+
 - ### [see more toast options](https://react-hot-toast.com/)
 
 \
@@ -607,6 +625,38 @@ export default function App() {
   )
 }
 ```
+
+\
+&nbsp;
+
+---
+
+## image upload
+
+```js
+const imageAPI = 'api key from image hosting server'
+
+async function handle() {
+  const image = data.image[0]
+  const formData = new FormData()
+  formData.append('image', image)
+
+  const url = `https://api.imgbb.com/1/upload?key=${imageAPI}`
+    // using fetch
+    fetch(url, {
+      method: 'POST',
+      body: formData,
+    })
+
+    //or using axios
+    axios.post(url, formData ).then....`set hostedUrl to mongodb`
+}
+```
+
+\
+&nbsp;
+
+---
 
 - ### day picker css
   1. create a css file in src folder `daypicker.css`.
