@@ -78,18 +78,9 @@ firebase login
 - [express server setup](#express-server)
 - [mongodb get started](#mongodb-quick-start)
 
-# video notes ||
-
-- 76-7 (sendgrid custom email send)
-- 67-5 (pagination)
-- 63.5-4 (google map integration)
-- 69-4 (useToken custom hook)
-- 70.5 (jwt recap)
   \
    &nbsp;
-
 ---
-
 ## create react app
 
 ```bash
@@ -820,9 +811,11 @@ async function handle() {
 
 ```bash
 # npm
+npm init -y
 npm install express cors mongodb dotenv jsonwebtoken
 
 # yarn
+yarn init -y
 yarn add express cors mongodb dotenv jsonwebtoken
 
 # if use yarn you need to add *script* manually to package.json file
