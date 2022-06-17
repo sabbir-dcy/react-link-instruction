@@ -48,6 +48,17 @@ yarn global add nodemon
 - prettier code formatter
 - dracula official theme
 
+## firebase install
+
+```bash
+# install firebase tools
+npm install -g firebase-tools
+```
+```bash
+firebase login
+# press y for giving cli usage access
+# after redirect to browser login with google account and give access
+```
 # client packages ||
 
 - [Tailwind and daisyui](#tailwind)
