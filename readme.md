@@ -62,7 +62,7 @@ _tip - if you face webpack error while editing config.js file, restart the clien
 
 ```js
 module.exports = {
-  content: ['./src/**/*.{js,jsx,ts,tsx}'],
+  content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       // tailwind themes here
@@ -71,15 +71,18 @@ module.exports = {
   daisyui: {
     themes: false,
     // false means it won't apply daisy ui theme
+    // Or
+    themes: [],
+    // empty array allows you to set background color of html body
   },
-  plugins: [require('daisyui')],
-}
+  plugins: [require("daisyui")],
+};
 ```
 
 - at index.css or App.css->
 
 ```css
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
 
 @tailwind base;
 @tailwind components;
@@ -109,11 +112,11 @@ _tip - don't forget to add providers on firebase website in authentication secti
 
 ```js
 // sign in with google
-import { useSignInWithGoogle } from 'react-firebase-hooks/auth'
-const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth)
+import { useSignInWithGoogle } from "react-firebase-hooks/auth";
+const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
 function handler(arg) {
-  signInWithGoogle()
+  signInWithGoogle();
 }
 ```
 
@@ -121,12 +124,12 @@ function handler(arg) {
 
 ```js
 // create user with email with email verification
-import { useCreateUserWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 const [createUserWithEmailAndPassword, cUser, cLoading, cError] =
-  useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true })
+  useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-function handler(email,password) {
-  createUserWithEmailAndPassword(email, password)
+function handler(email, password) {
+  createUserWithEmailAndPassword(email, password);
 }
 ```
 
@@ -134,12 +137,12 @@ function handler(email,password) {
 
 ```js
 // login with email and password
-import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth'
+import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 const [signInWithEmailAndPassword, eUser, eLoading, eError] =
-  useSignInWithEmailAndPassword(auth)
+  useSignInWithEmailAndPassword(auth);
 
 function handler(email, password) {
-  signInWithEmailAndPassword(email, password)
+  signInWithEmailAndPassword(email, password);
 }
 ```
 
@@ -147,12 +150,12 @@ function handler(email, password) {
 
 ```js
 // sigin in with github
-import { useSignInWithGithub } from 'react-firebase-hooks/auth'
+import { useSignInWithGithub } from "react-firebase-hooks/auth";
 const [signInWithGithub, gitUser, gitLoading, gitError] =
-  useSignInWithGithub(auth)
+  useSignInWithGithub(auth);
 
 function handler() {
-  signInWithGithub()
+  signInWithGithub();
 }
 ```
 
@@ -160,12 +163,12 @@ function handler() {
 
 ```js
 // update user profile
-import { useUpdateProfile } from 'react-firebase-hooks/auth'
-const [updateProfile, updating, updateError] = useUpdateProfile(auth)
+import { useUpdateProfile } from "react-firebase-hooks/auth";
+const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
 async function handler(arg) {
-  await updateProfile({ displayName, photoURL })
-  alert('Updated profile')
+  await updateProfile({ displayName, photoURL });
+  alert("Updated profile");
 }
 ```
 
@@ -173,13 +176,13 @@ async function handler(arg) {
 
 ```js
 // send email verification
-import { useSendEmailVerification } from 'react-firebase-hooks/auth'
+import { useSendEmailVerification } from "react-firebase-hooks/auth";
 const [sendEmailVerification, sending, verifyError] =
-  useSendEmailVerification(auth)
+  useSendEmailVerification(auth);
 
 async function handler(arg) {
-  await sendEmailVerification()
-  alert('Sent email')
+  await sendEmailVerification();
+  alert("Sent email");
 }
 ```
 
@@ -187,13 +190,13 @@ async function handler(arg) {
 
 ```js
 // password reset email
-import { useSendPasswordResetEmail } from 'react-firebase-hooks/auth'
+import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 const [sendPasswordResetEmail, sending, resetError] =
-  useSendPasswordResetEmail(auth)
+  useSendPasswordResetEmail(auth);
 
 async function handler(arg) {
-  await sendPasswordResetEmail(email)
-  alert('Sent email')
+  await sendPasswordResetEmail(email);
+  alert("Sent email");
 }
 
 // note: this hook does not give you confirmation if the email is exist or not...it says 'email sent' to any email you geive.ex- yadayada@mail.com
@@ -214,32 +217,32 @@ yarn add react-router-dom
 
 ```js
 // require auth file
-import { useAuthState } from 'react-firebase-hooks/auth'
+import { useAuthState } from "react-firebase-hooks/auth";
 
 function RequireAuth({ children }) {
-  const [user, loading] = useAuthState(auth)
-  const location = useLocation()
+  const [user, loading] = useAuthState(auth);
+  const location = useLocation();
 
   if (laoding) {
-    return <Spinner></Spinner>
+    return <Spinner></Spinner>;
   }
   if (!user) {
-    return <Navigate to='/login' state={{ from: location }} replace />
+    return <Navigate to="/login" state={{ from: location }} replace />;
   }
 
-  return children
+  return children;
 }
-export default RequireAuth
+export default RequireAuth;
 ```
 
 ```js
 // authentication file
-const navigate = useNavigate()
-const location = useLocation()
-const from = location.state?.from?.pathname || '/'
+const navigate = useNavigate();
+const location = useLocation();
+const from = location.state?.from?.pathname || "/";
 
 if (user) {
-  navigate(from, { replace: true })
+  navigate(from, { replace: true });
 }
 ```
 
@@ -249,24 +252,24 @@ if (user) {
 
 ```js
 function CustomLink({ children, to, ...props }) {
-  let resolved = useResolvedPath(to)
-  let match = useMatch({ path: resolved.pathname, end: true })
+  let resolved = useResolvedPath(to);
+  let match = useMatch({ path: resolved.pathname, end: true });
 
   return (
     <div>
       <Link
-        style={{ textDecoration: match ? 'underline' : 'none' }}
+        style={{ textDecoration: match ? "underline" : "none" }}
         to={to}
         {...props}
       >
         {children}
       </Link>
-      // {match && ' (active)'}
+      // {match && " (active)"}
     </div>
-  )
+  );
 }
 
-export default CustomLink
+export default CustomLink;
 ```
 
 \
@@ -299,13 +302,13 @@ fun App() {
 
 ```js
 // usage
-import { toast } from 'react-toastify'
+import { toast } from "react-toastify";
 
-toast.success('congrats!')
-toast.error('invalid!')
-toast.warning('warning')
-toast.info('information')
-toast('default toast')
+toast.success("congrats!");
+toast.error("invalid!");
+toast.warning("warning");
+toast.info("information");
+toast("default toast");
 ```
 
 - ### [see more toast options](https://fkhadra.github.io/react-toastify/introduction)
@@ -337,11 +340,11 @@ fun App() {
 
 ```js
 // usage
-import toast from 'react-hot-toast'
-toast.success('Successfully created!')
-toast.error('This is an error!')
-toast.loading('Waiting...')
-toast('Hello World')
+import toast from "react-hot-toast";
+toast.success("Successfully created!");
+toast.error("This is an error!");
+toast.loading("Waiting...");
+toast("Hello World");
 ```
 
 - ### [see more toast options](https://react-hot-toast.com/)
@@ -361,22 +364,22 @@ yarn add axios@0.25.0
 // axios get method
 //----client
 useEffect(() => {
-  axios('http://localhost:5000/services?name=john', {
+  axios("http://localhost:5000/services?name=john", {
     headers: {
       authorization: `bearer secret key`,
     },
-  }).then((res) => console.log(res))
-}, [])
+  }).then((res) => console.log(res));
+}, []);
 
 //-----server
-app.get('/services', (req, res) => {
-  const authorization = req.headers.authorization
+app.get("/services", (req, res) => {
+  const authorization = req.headers.authorization;
 
-  const queryParameter = req.query
-  console.log(authorization)
-  console.log(queryParameter)
-  res.send(services)
-})
+  const queryParameter = req.query;
+  console.log(authorization);
+  console.log(queryParameter);
+  res.send(services);
+});
 ```
 
 ```js
@@ -386,25 +389,25 @@ const handleDelete = () => {
   axios
     .delete(`http://localhost:5000/services/${1}`, {
       data: {
-        service: 'body from delete',
+        service: "body from delete",
       },
       headers: {
         authorization: `bearer secret key from delete`,
       },
     })
-    .then((res) => console.log(res))
-}
+    .then((res) => console.log(res));
+};
 
 //------------server
 
-app.delete('/services/:id', (req, res) => {
-  const query = req.params.id
-  const authorization = req.headers.authorization
-  const service = req.body
-  console.log(authorization)
-  console.log(query)
-  console.log(service)
-})
+app.delete("/services/:id", (req, res) => {
+  const query = req.params.id;
+  const authorization = req.headers.authorization;
+  const service = req.body;
+  console.log(authorization);
+  console.log(query);
+  console.log(service);
+});
 ```
 
 ```js
@@ -414,7 +417,7 @@ const handlePost = () => {
   axios.post(
     `http://localhost:5000/services`,
     {
-      service: 'body from post',
+      service: "body from post",
     },
 
     {
@@ -422,16 +425,16 @@ const handlePost = () => {
         authorization: `bearer secret key from post`,
       },
     }
-  )
-}
+  );
+};
 
 // --------server
-app.post('/services', (req, res) => {
-  const service = req.body
-  const authorization = req.headers.authorization
-  console.log(service)
-  console.log(authorization)
-})
+app.post("/services", (req, res) => {
+  const service = req.body;
+  const authorization = req.headers.authorization;
+  console.log(service);
+  console.log(authorization);
+});
 ```
 
 ```js
@@ -441,24 +444,24 @@ const handlePut = () => {
   axios.put(
     `http://localhost:5000/services`,
     {
-      service: 'body from put ',
+      service: "body from put ",
     },
     {
       headers: {
         authorization: `bearer secret key from put`,
       },
     }
-  )
-}
+  );
+};
 
 //-------------server
 
-app.put('/services', (req, res) => {
-  const updatedService = req.body
-  const authorization = req.headers.authorization
-  console.log(updatedService)
-  console.log(authorization)
-})
+app.put("/services", (req, res) => {
+  const updatedService = req.body;
+  const authorization = req.headers.authorization;
+  console.log(updatedService);
+  console.log(authorization);
+});
 ```
 
 ```js
@@ -466,22 +469,22 @@ app.put('/services', (req, res) => {
 const handlePatch = () => {
   axios.patch(
     `http://localhost:5000/services`,
-    { service: 'body from patch' },
+    { service: "body from patch" },
     {
       headers: {
         authorization: `bearer secret key from patch`,
       },
     }
-  )
-}
+  );
+};
 
 //-------------server
-app.patch('/services', (req, res) => {
-  const updatedService = req.body
-  const authorization = req.headers.authorization
-  console.log(updatedService)
-  console.log(authorization)
-})
+app.patch("/services", (req, res) => {
+  const updatedService = req.body;
+  const authorization = req.headers.authorization;
+  console.log(updatedService);
+  console.log(authorization);
+});
 ```
 
 \
@@ -569,14 +572,14 @@ yarn add @fortawesome/react-fontawesome
 
 ```js
 // usage
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 return (
   <button>
     <FontAwesomeIcon icon={faCoffee} />
   </button>
-)
+);
 ```
 
 \
@@ -586,14 +589,14 @@ return (
 
 ```js
 // usage
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCoffee } from '@fortawesome/free-solid-svg-icons'
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faCoffee } from "@fortawesome/free-solid-svg-icons";
 
 return (
   <button>
     <FontAwesomeIcon icon={faCoffee} />
   </button>
-)
+);
 ```
 
 \
@@ -608,22 +611,22 @@ yarn add react-day-picker date-fns
 ```
 
 ```js
-import React from 'react'
-import { DayPicker } from 'react-day-picker'
+import React from "react";
+import { DayPicker } from "react-day-picker";
 
 export default function App() {
   // disable all previous days
   const disabledDays = [
     { from: new Date(1600, 0, 1), to: new Date(Date.now() - 86400000) },
-  ]
+  ];
 
   return (
     <DayPicker
       defaultMonth={new Date()}
       disabled={disabledDays}
-      mode='single'
+      mode="single"
     />
-  )
+  );
 }
 ```
 
@@ -706,23 +709,20 @@ yarn add express cors mongodb dotenv jsonwebtoken
 - ### [dotenv config call](https://github.com/motdotla/dotenv#usage)
 - ### [cors usage](https://www.npmjs.com/package/cors#usage)
 
-
 ```js
 // sample code
-const express = require('express');
-const cors = require('cors');
-require('dotenv').config()
+const express = require("express");
+const cors = require("cors");
+require("dotenv").config();
 
-const app = express()
-const port = process.env.PORT || 5000
+const app = express();
+const port = process.env.PORT || 5000;
 
+app.get("/", (req, res) => {
+  res.send("hello world");
+});
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
-
-app.listen(port, () => console.log('listening to port', port))
-
+app.listen(port, () => console.log("listening to port", port));
 ```
 
 \
