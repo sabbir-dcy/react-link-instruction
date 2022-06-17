@@ -93,7 +93,7 @@ Select a variant: » react
 cd first-react-project
 yarn
 code .
-yarn run dev 
+yarn run dev
 #or for local area network access
 yarn run dev --host
 ```
@@ -548,6 +548,61 @@ app.patch("/services", (req, res) => {
 });
 ```
 
+\
+&nbsp;
+
+---
+
+## [axios interceptor]()
+
+```js
+import axios from 'axios'
+import { signOut } from 'firebase/auth'
+import { auth } from '../firebase/firebase.init'
+
+// create base url
+export const axiosPrivate = axios.create({
+  baseURL: 'http://localhost:5000',
+  // baseURL: 'https://example-api.herokuapp.com',
+
+axiosPrivate.interceptors.request.use(
+  function (config) {
+    // attatch authorization access token before sending request
+    if (!config.headers.authorization) {
+      config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+    }
+    return config
+  },
+  function (error) {
+    return Promise.reject(error)
+  }
+)
+
+// Add a response interceptor
+axiosPrivate.interceptors.response.use(
+  function (response) {
+    return response
+  },
+  function (error) {
+    if (error.response.status === 403 || error.response.status === 401) {
+      signOut(auth)
+    }
+    return Promise.reject(error)
+  }
+)
+})
+
+```
+
+## use case
+
+```js
+// get service by user
+// no need to pass auth header
+useEffect(() => {
+  axios("/services?name=john").then((res) => console.log(res));
+}, []);
+```
 \
 &nbsp;
 
