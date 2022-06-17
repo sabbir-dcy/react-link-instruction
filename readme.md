@@ -1,11 +1,12 @@
-# os configuration
+# OS configuration
 
 ## install node
 
 - [node download link](https://nodejs.org/en/)
 
 ```bash
-download the recommended version. install .msi file
+download the recommended version and install .msi file
+just agree and click next next
 ```
 
 ## for yarn users install yarn globally
@@ -22,28 +23,28 @@ npm install -g nodemon
 yarn global add nodemon
 ```
 
-## setup vscode
+## customize vscode
+### `instruction ->`
 
 - [vscode download link](https://code.visualstudio.com/)
-- [vscode setting file]()
-- instruction ->
+- [vscode setting.json file](https://github.com/sabbir-dcy/react-link-instruction/blob/main/.settings.jsonc)
 
 ```bash
-1. copy full json code from vscode repo
+1. copy full json code from the link above
 2. open vscode
 3. press ctrl + shift + p
-4. search for open settings (json) ....# not default settings
+4. search for `open settings (json)` ....# not default settings
 5. paste the code here and save
 ```
 
-### packages
+## extensions
 
 - better comments
 - es7+react/redux native snippets
 - auto rename tag
 - material icon theme
 - prettier code formatter
-- dracula/atom one dark theme
+- dracula official theme
 
 # client packages
 
