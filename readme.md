@@ -1,4 +1,4 @@
-# OS configuration
+# OS configuration ||
 
 ## install node
 
@@ -24,6 +24,7 @@ yarn global add nodemon
 ```
 
 ## customize vscode
+
 ### `instruction ->`
 
 - [vscode download link](https://code.visualstudio.com/)
@@ -34,7 +35,8 @@ yarn global add nodemon
 2. open vscode
 3. press ctrl + shift + p
 4. search for `open settings (json)` ....# not default settings
-5. paste the code here and save
+5. clear all previous code if there is any.
+5. paste to the copied code here and save
 ```
 
 ## extensions
@@ -46,7 +48,7 @@ yarn global add nodemon
 - prettier code formatter
 - dracula official theme
 
-# client packages
+# client packages ||
 
 - [Tailwind and daisyui](#tailwind)
 - [authentication](#authentication)
@@ -60,12 +62,12 @@ yarn global add nodemon
 - [react day picker](#react-day-picker)
 - [image upload](#image-upload)
 
-# server packages
+# server packages ||
 
 - [express server setup](#express-server)
 - [mongodb get started](#mongodb-quick-start)
 
-# video notes
+# video notes ||
 
 - 76-7 (sendgrid custom email send)
 - 67-5 (pagination)
@@ -83,6 +85,17 @@ yarn global add nodemon
 npx create-react-app my-app
 #or
 yarn create react-app my-app
+#or for vite user
+yarn create vite
+Project name: » first-react-project
+Select a framework: » react
+Select a variant: » react
+cd first-react-project
+yarn
+code .
+yarn run dev 
+#or for local area network access
+yarn run dev --host
 ```
 
 ## environment variable
@@ -127,7 +140,7 @@ module.exports = {
 };
 ```
 
-- at index.css or App.css->
+- at index.css ->
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
