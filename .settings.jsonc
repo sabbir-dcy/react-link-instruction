@@ -1,0 +1,87 @@
+{
+  "window.menuBarVisibility": "compact",
+
+  //* editor -->
+  "editor.fontFamily": "cascadia code, fira code, jetbrains mono, monaco, consolas, monospace",
+
+  "editor.fontSize": 18,
+  "editor.fontLigatures": true,
+  "editor.cursorWidth": 3,
+  "editor.cursorStyle": "line",
+  "editor.cursorBlinking": "phase",
+  "editor.cursorSmoothCaretAnimation": true,
+  // "editor.cursorSurroundingLines": 8,
+
+  "editor.smoothScrolling": true,
+  "editor.mouseWheelScrollSensitivity": 2,
+
+  "editor.minimap.enabled": false,
+  "editor.wordWrap": "on",
+  "editor.tabCompletion": "on", // auto completion with 'tab' instead of 'enter'
+  "editor.formatOnSave": true,
+  "editor.acceptSuggestionOnEnter": "off",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "editor.tabSize": 2,
+  "editor.defaultFormatter": "esbenp.prettier-vscode", //extension
+
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+    //this wont let prettier to handle html formatting
+  },
+  "[javascriptreact]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+    // wont let prettier to handle jsx formatting
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "vscode.typescript-language-features"
+    // wont let prettier to handle js formatting
+  },
+
+  "editor.parameterHints.enabled": false,
+  "editor.hover.above": false,
+
+  //* terminal -->
+  "terminal.integrated.tabs.location": "left",
+  "terminal.integrated.fontSize": 18,
+  "terminal.integrated.fontFamily": "cascadia code",
+  "terminal.integrated.cursorStyle": "line",
+  "terminal.integrated.cursorWidth": 2,
+  "terminal.integrated.cursorBlinking": true,
+  "debug.console.fontFamily": "consolas",
+  "debug.console.fontSize": 20,
+  "workbench.startupEditor": "none",
+  "workbench.colorCustomizations": {
+    "editorIndentGuide.activeBackground": "#b9b9b9",
+    "statusBar.background": "#222225",
+    "statusBar.noFolderBackground": "#222225",
+    "statusBar.debuggingBackground": "#511f1f"
+  },
+
+  //* inegretd terminal switch to terminal from powershell -->
+  "terminal.integrated.defaultProfile.windows": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe (migrated)",
+  "terminal.integrated.profiles.windows": {
+    "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe (migrated)": {
+      "path": "C:\\Windows\\System32\\WindowsPowerShell\\v1.0\\powershell.exe",
+      "args": []
+    }
+  },
+
+  //* other -->
+  "files.defaultLanguage": "javascriptreact",
+  // "files.autoSave": "afterDelay",
+  // "files.autoSaveDelay": 1050,
+  "liveServer.settings.donotShowInfoMsg": true,
+  "zenMode.fullScreen": false,
+  "better-comments.multilineComments": true,
+  "tailwindCSS.emmetCompletions": true,
+  "breadcrumbs.symbolPath": "off",
+  "explorer.compactFolders": false, // expands folder structre even for the single file
+
+  //* react -->
+  "emmet.includeLanguages": {
+    "javascript": "javascriptreact" // inclued html emmet to js file
+  },
+  "workbench.iconTheme": "material-icon-theme", //extension
+  "material-icon-theme.folders.color": "#b342f5",
+  "workbench.colorTheme": "Dracula" // color font the folder that does not have any icon built in
+}

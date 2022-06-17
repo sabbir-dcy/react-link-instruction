@@ -1,3 +1,50 @@
+# os configuration
+
+## install node
+
+- [node download link](https://nodejs.org/en/)
+
+```bash
+download the recommended version. install .msi file
+```
+
+## for yarn users install yarn globally
+
+```bash
+npm install --global yarn
+```
+
+## install nodemon globally for backend
+
+```bash
+npm install -g nodemon
+#or
+yarn global add nodemon
+```
+
+## setup vscode
+
+- [vscode download link](https://code.visualstudio.com/)
+- [vscode setting file]()
+- instruction ->
+
+```bash
+1. copy full json code from vscode repo
+2. open vscode
+3. press ctrl + shift + p
+4. search for open settings (json) ....# not default settings
+5. paste the code here and save
+```
+
+### packages
+
+- better comments
+- es7+react/redux native snippets
+- auto rename tag
+- material icon theme
+- prettier code formatter
+- dracula/atom one dark theme
+
 # client packages
 
 - [Tailwind and daisyui](#tailwind)
