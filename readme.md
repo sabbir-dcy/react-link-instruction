@@ -1,5 +1,33 @@
 # OS configuration ||
 
+- [install node | nodemon | yarn](#install-node)
+- [install vscode](#customize-vscode)
+- [install firebase | heroku](#firebase-install)
+
+# client packages ||
+
+- [Tailwind and daisyui](#tailwind)
+- [authentication](#authentication)
+- [react router dom](#react-router-dom)
+- [react toastify](#react-toastify)
+- [react hot toast](#hot-toast)
+- [axios](#axios)
+- [react hook form](#react-hook-form)
+- [react query](#react-query)
+- [Icons](#Icons)
+- [react day picker](#react-day-picker)
+- [image upload](#image-upload)
+
+# server packages ||
+
+- [express server setup](#express-server)
+- [mongodb get started](#mongodb-quick-start)
+
+\
+&nbsp;
+
+---
+
 ## install node
 
 - [node download link](https://nodejs.org/en/)
@@ -47,6 +75,8 @@ yarn global add nodemon
 - material icon theme
 - prettier code formatter
 - dracula official theme
+- live server
+- live share (optional)
 
 ## firebase install
 
@@ -54,40 +84,40 @@ yarn global add nodemon
 # install firebase tools
 npm install -g firebase-tools
 ```
+
 ```bash
 firebase login
 # press y for giving cli usage access
 # after redirect to browser login with google account and give access
 ```
-# client packages ||
+- `if you face any issue while hosting app on firebase use following commands`
+```bash
+firebase login --reauth
+firebase use --add
+```
+## heroku install
 
-- [Tailwind and daisyui](#tailwind)
-- [authentication](#authentication)
-- [react router dom](#react-router-dom)
-- [react toastify](#react-toastify)
-- [react hot toast](#hot-toast)
-- [axios](#axios)
-- [react hook form](#react-hook-form)
-- [react query](#react-query)
-- [Icons](#Icons)
-- [react day picker](#react-day-picker)
-- [image upload](#image-upload)
+- [heroku cli download link](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
+- download 64 for windows 10/11 or mac version according to your os
+- install the exe file
+- click next next
+- after installing run the following command on terminal
 
-# server packages ||
+```bash
+heroku login
+```
 
-- [express server setup](#express-server)
-- [mongodb get started](#mongodb-quick-start)
+- press any key to open browser
+- complete login process
 
-  \
-   &nbsp;
----
 ## create react app
 
 ```bash
 npx create-react-app my-app
 #or
 yarn create react-app my-app
-#or for vite user
+
+#create react app with vite
 yarn create vite
 Project name: » first-react-project
 Select a framework: » react
@@ -95,8 +125,7 @@ Select a variant: » react
 cd first-react-project
 yarn
 code .
-yarn run dev
-#or for local area network access
+yarn run dev #or for local area network access
 yarn run dev --host
 ```
 
@@ -605,6 +634,7 @@ useEffect(() => {
   axios("/services?name=john").then((res) => console.log(res));
 }, []);
 ```
+
 \
 &nbsp;
 
