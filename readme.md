@@ -1,7 +1,7 @@
 # OS configuration ||
 
 - [install node | nodemon | yarn](#install-node)
-- [install vscode](#customize-vscode)
+- [install vscode and customize](#customize-vscode)
 - [install firebase | heroku](#firebase-install)
 
 # client packages ||
