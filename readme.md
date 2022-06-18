@@ -449,7 +449,10 @@ toast("Hello World");
 ## [axios](https://axios-http.com/docs/example)
 
 ```bash
+#stable old version
 yarn add axios@0.25.0
+#or latest version
+yarn add axios
 ```
 
 ```js
