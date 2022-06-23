@@ -22,6 +22,7 @@
 
 - [express server setup](#express-server)
 - [mongodb get started](#mongodb-quick-start)
+- [mongoose get started](#mongoose-quick-start)
 
 \
 &nbsp;
@@ -90,11 +91,14 @@ firebase login
 # press y for giving cli usage access
 # after redirect to browser login with google account and give access
 ```
+
 - `if you face any issue while hosting app on firebase use following commands`
+
 ```bash
 firebase login --reauth
 firebase use --add
 ```
+
 ## heroku install
 
 - [heroku cli download link](https://devcenter.heroku.com/articles/getting-started-with-nodejs#set-up)
@@ -899,3 +903,41 @@ app.listen(port, () => console.log("listening to port", port));
 - ### [sort doc](https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/read-operations/sort/)
 
 - ### [skip and limit doc](https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/read-operations/limit/#sample-documents)
+
+## mongoose quick start
+ - install mongodb and mongocompass in your local machine
+ - then ->
+```bash
+yarn add express mongoose
+```
+
+```js
+// connecting mongodb through mongoose
+const express = require("express");
+const mongoose = require("mongoose");
+
+const app = express();
+app.use(express.json());
+
+mongoose
+  .connect("mongodb://localhost/todos")
+  .then(() => console.log("connection successful"))
+  .catch((err) => console.log(err));
+
+// global error handler
+function errorHandle(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500).json({ error: err });
+}
+app.listen(5000, () => console.log("listening to the app"));
+```
+
+```js
+// application routes
+const todoHandler = require("./routeHandler/todoHandler");
+app.use("/todo", todoHandler);
+```
+
+- handler
