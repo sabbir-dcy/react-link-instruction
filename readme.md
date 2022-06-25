@@ -219,6 +219,7 @@ export const auth = getAuth(app);
 ```
 
 - create `.env.local` inside root folder of the project
+- copy the code bellow and replace `secret-key-from-firebase` with actual key
 
 ```
 REACT_APP_apiKey=secret-key-from-firebase
@@ -255,7 +256,7 @@ _tip - don't forget to add providers on firebase website in authentication secti
 import { useSignInWithGoogle } from "react-firebase-hooks/auth";
 const [signInWithGoogle, gUser, gLoading, gError] = useSignInWithGoogle(auth);
 
-function handler(arg) {
+function handleGoogleSignIn(arg) {
   signInWithGoogle();
 }
 ```
@@ -268,7 +269,7 @@ import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth";
 const [createUserWithEmailAndPassword, cUser, cLoading, cError] =
   useCreateUserWithEmailAndPassword(auth, { sendEmailVerification: true });
 
-function handler(email, password) {
+function handleCreateUser(email, password) {
   createUserWithEmailAndPassword(email, password);
 }
 ```
@@ -281,7 +282,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth";
 const [signInWithEmailAndPassword, eUser, eLoading, eError] =
   useSignInWithEmailAndPassword(auth);
 
-function handler(email, password) {
+function handleUserSignIn(email, password) {
   signInWithEmailAndPassword(email, password);
 }
 ```
@@ -294,7 +295,7 @@ import { useSignInWithGithub } from "react-firebase-hooks/auth";
 const [signInWithGithub, gitUser, gitLoading, gitError] =
   useSignInWithGithub(auth);
 
-function handler() {
+function handleGithubSignIn() {
   signInWithGithub();
 }
 ```
@@ -306,7 +307,7 @@ function handler() {
 import { useUpdateProfile } from "react-firebase-hooks/auth";
 const [updateProfile, updating, updateError] = useUpdateProfile(auth);
 
-async function handler(arg) {
+async function handleUpdateProfile(arg) {
   await updateProfile({ displayName, photoURL });
   alert("Updated profile");
 }
@@ -320,7 +321,7 @@ import { useSendEmailVerification } from "react-firebase-hooks/auth";
 const [sendEmailVerification, sending, verifyError] =
   useSendEmailVerification(auth);
 
-async function handler(arg) {
+async function handleSendVerification(arg) {
   await sendEmailVerification();
   alert("Sent email");
 }
@@ -334,7 +335,7 @@ import { useSendPasswordResetEmail } from "react-firebase-hooks/auth";
 const [sendPasswordResetEmail, sending, resetError] =
   useSendPasswordResetEmail(auth);
 
-async function handler(arg) {
+async function handleResetPassword(arg) {
   await sendPasswordResetEmail(email);
   alert("Sent email");
 }
