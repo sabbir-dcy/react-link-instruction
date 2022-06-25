@@ -7,6 +7,7 @@
 # client packages ||
 
 - [Tailwind and daisyui](#tailwind)
+- [firebase integration](#firebase-integration)
 - [authentication](#authentication)
 - [react router dom](#react-router-dom)
 - [react toastify](#react-toastify)
@@ -157,11 +158,15 @@ yarn add daisyui
 _tip - if you face webpack error while editing config.js file, restart the client_
 
 ```js
+/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
-      // tailwind themes here
+      // custom theme
+      colors: {
+        primary: "#0080ff",
+      },
     },
   },
   daisyui: {
@@ -183,6 +188,45 @@ module.exports = {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+```
+
+\
+ &nbsp;
+
+---
+
+## firebase integration
+
+- create firebase/firebase.init.js inside src folder
+- copy the code below to that file
+
+```js
+import { initializeApp } from "firebase/app";
+import { getAuth } from "firebase/auth";
+
+const firebaseConfig = {
+  apiKey: process.env.REACT_APP_apiKey,
+  authDomain: process.env.REACT_APP_authDomain,
+  projectId: process.env.REACT_APP_projectId,
+  storageBucket: process.env.REACT_APP_storageBucket,
+  messagingSenderId: process.env.REACT_APP_messagingSenderId,
+  appId: process.env.REACT_APP_appId,
+};
+
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+export const auth = getAuth(app);
+```
+
+- create `.env.local` inside root folder of the project
+
+```
+REACT_APP_apiKey=secret-key-from-firebase
+REACT_APP_authDomain=secret-key-from-firebase
+REACT_APP_projectId=secret-key-from-firebase
+REACT_APP_storageBucket=secret-key-from-firebase
+REACT_APP_messagingSenderId=secret-key-from-firebase
+REACT_APP_appId=secret-key-from-firebase
 ```
 
 \
@@ -352,7 +396,7 @@ function CustomLink({ children, to, ...props }) {
   let match = useMatch({ path: resolved.pathname, end: true });
 
   return (
-    <div>
+    <>
       <Link
         style={{ textDecoration: match ? "underline" : "none" }}
         to={to}
@@ -360,8 +404,7 @@ function CustomLink({ children, to, ...props }) {
       >
         {children}
       </Link>
-      // {match && " (active)"}
-    </div>
+    </>
   );
 }
 
@@ -905,8 +948,10 @@ app.listen(port, () => console.log("listening to port", port));
 - ### [skip and limit doc](https://www.mongodb.com/docs/drivers/node/current/fundamentals/crud/read-operations/limit/#sample-documents)
 
 ## mongoose quick start
- - install mongodb and mongocompass in your local machine
- - then ->
+
+- install mongodb and mongocompass in your local machine
+- then ->
+
 ```bash
 yarn add express mongoose
 ```
