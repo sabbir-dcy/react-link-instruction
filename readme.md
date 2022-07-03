@@ -967,7 +967,7 @@ app.listen(port, () => console.log("listening to port", port));
 - then ->
 
 ```bash
-yarn add express mongoose
+yarn add express mongoose dotenv cors
 ```
 
 ```js
@@ -975,7 +975,7 @@ yarn add express mongoose
 const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
-const routeNameHandler = require("/routeNameHandler.js");
+const routeNameHandler = require("./routeNameHandler.js");
 require("dotenv").config();
 
 mongoose
@@ -1015,14 +1015,31 @@ app.listen(5000, () => console.log("listening to the app"));
 ```
 
 ```js
+const mongoose = require("mongoose");
+const collectionSchema = mongoose.Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  email: {
+    type: String,
+    required: true,
+  },
+});
+
+module.exports = collectionSchema;
+```
+
+```js
 // application routes
 
 const express = require("express");
 const router = express.Router();
 const mongoose = require("mongoose");
+const collectionSchema = require("./collectionSchema.js");
 
 // create instance of collection schema
-const CollectionName = new mongoose.model("Lab", CollectionSchema);
+const CollectionName = new mongoose.model("Lab", collectionSchema);
 
 // get all objects api route
 app.get("/", async (req, res) => {
@@ -1032,11 +1049,11 @@ app.get("/", async (req, res) => {
 });
 
 // post api
-app.post('/', async (req, res)=> {
-  const newData = new CollectionName(req.body)
-  const result = await newData.save()
-  res.json(result, {message: 'data posted'})
-})
+app.post("/", async (req, res) => {
+  const newData = new CollectionName(req.body);
+  const result = await newData.save();
+  res.json(result, { message: "data posted" });
+});
 
 module.exports = router;
 ```
