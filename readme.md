@@ -974,14 +974,34 @@ yarn add express mongoose
 // connecting mongodb through mongoose
 const express = require("express");
 const mongoose = require("mongoose");
-
-const app = express();
-app.use(express.json());
+const cors = require("cors");
+const routeNameHandler = require("/routeNameHandler.js");
+require("dotenv").config();
 
 mongoose
-  .connect("mongodb://localhost/todos")
+  .connect("mongodb://localhost/databaseName")
   .then(() => console.log("connection successful"))
   .catch((err) => console.log(err));
+
+const app = express();
+const port = process.env.PORT || 5000;
+app.use(express.json());
+
+app.use(cors({ origin: "http://localhost:3000" })); // for single route
+
+// or use this for mutiple route
+const whitelist = ["https://example-domain", "http://localhost:3000"];
+const corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
+};
+app.use(cors(corsOptions));
+app.use("/routeName", routeNameHandler);
 
 // global error handler
 function errorHandle(err, req, res, next) {
@@ -990,13 +1010,33 @@ function errorHandle(err, req, res, next) {
   }
   res.status(500).json({ error: err });
 }
+
 app.listen(5000, () => console.log("listening to the app"));
 ```
 
 ```js
 // application routes
-const todoHandler = require("./routeHandler/todoHandler");
-app.use("/todo", todoHandler);
-```
 
-- handler
+const express = require("express");
+const router = express.Router();
+const mongoose = require("mongoose");
+
+// create instance of collection schema
+const CollectionName = new mongoose.model("Lab", CollectionSchema);
+
+// get all objects api route
+app.get("/", async (req, res) => {
+  const query = {};
+  const result = await CollectionName.find(query);
+  res.json(result);
+});
+
+// post api
+app.post('/', async (req, res)=> {
+  const newData = new CollectionName(req.body)
+  const result = await newData.save()
+  res.json(result, {message: 'data posted'})
+})
+
+module.exports = router;
+```
