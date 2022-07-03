@@ -1039,7 +1039,7 @@ const mongoose = require("mongoose");
 const collectionSchema = require("./collectionSchema.js");
 
 // create instance of collection schema
-const CollectionName = new mongoose.model("Lab", collectionSchema);
+const CollectionName = new mongoose.model("CollectionName", collectionSchema);
 
 // get all objects api route
 app.get("/", async (req, res) => {
