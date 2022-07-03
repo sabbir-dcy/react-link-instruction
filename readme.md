@@ -139,7 +139,9 @@ yarn run dev --host
 - `.env.local` at root folder
 - REACT_APP_credentialName=secret key
 
-## [tailwind](https://tailwindcss.com/docs/guides/create-react-app) & [Daisy ui](https://daisyui.com/docs/install/)
+## [tailwind](https://tailwindcss.com/docs/guides/create-react-app)
+
+## +[Daisy ui](https://daisyui.com/docs/install/)
 
 ```bash
 yarn add -D tailwindcss postcss autoprefixer
@@ -341,6 +343,18 @@ async function handleResetPassword(arg) {
 }
 
 // note: this hook does not give you confirmation if the email is exist or not...it says 'email sent' to any email you geive.ex- yadayada@mail.com
+
+// solution to this you can use firebase default hooks
+import { sendPasswordResetEmail } from "firebase/auth";
+function handleResetPassword(email) {
+  sendPasswordResetEmail(auth, email)
+    .then(() => {
+      console.log("email sent");
+    })
+    .catch((error) => {
+      console.log(error.message);
+    });
+}
 ```
 
 \
@@ -638,51 +652,50 @@ app.patch("/services", (req, res) => {
 ## [axios interceptor]()
 
 ```js
-import axios from 'axios'
-import { signOut } from 'firebase/auth'
-import { auth } from '../firebase/firebase.init'
+import axios from "axios";
+import { signOut } from "firebase/auth";
+import { auth } from "../firebase/firebase.init";
 
 // create base url
 export const axiosPrivate = axios.create({
-  baseURL: 'http://localhost:5000',
+  baseURL: "http://localhost:5000",
   // baseURL: 'https://example-api.herokuapp.com',
+});
 
 axiosPrivate.interceptors.request.use(
   function (config) {
     // attatch authorization access token before sending request
     if (!config.headers.authorization) {
-      config.headers.authorization = `Bearer ${localStorage.getItem('token')}`
+      config.headers.authorization = `Bearer ${localStorage.getItem("token")}`;
     }
-    return config
+    return config;
   },
   function (error) {
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
+);
 
 // Add a response interceptor
 axiosPrivate.interceptors.response.use(
   function (response) {
-    return response
+    return response;
   },
   function (error) {
     if (error.response.status === 403 || error.response.status === 401) {
-      signOut(auth)
+      signOut(auth);
     }
-    return Promise.reject(error)
+    return Promise.reject(error);
   }
-)
-})
-
+);
 ```
 
 ## use case
 
 ```js
 // get service by user
-// no need to pass auth header
+// no need to pass auth header as it was inclued through interceptor
 useEffect(() => {
-  axios("/services?name=john").then((res) => console.log(res));
+  axiosPrivate("/services?name=john").then((res) => console.log(res));
 }, []);
 ```
 
