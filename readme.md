@@ -5,7 +5,7 @@
 - [install firebase | heroku](#firebase-install)
 
 # client packages ||
-
+- [create react app](#create-react-app)
 - [Tailwind and daisyui](#tailwind)
 - [firebase integration](#firebase-integration)
 - [authentication](#authentication)
@@ -137,10 +137,7 @@ yarn run dev #or for local area network access
 yarn run dev --host
 ```
 
-## environment variable
 
-- `.env.local` at root folder
-- REACT_APP_credentialName=secret key
 
 ## [tailwind](https://tailwindcss.com/docs/guides/create-react-app)
 
