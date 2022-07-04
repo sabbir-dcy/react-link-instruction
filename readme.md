@@ -997,7 +997,7 @@ app.use(express.json());
 
 app.use(cors({ origin: "http://localhost:3000" })); // for single route
 
-// or use this for mutiple route
+// or use this for mutiple domain
 const whitelist = ["https://example-domain", "http://localhost:3000"];
 const corsOptions = {
   origin: function (origin, callback) {
@@ -1032,6 +1032,18 @@ const collectionSchema = mongoose.Schema({
   email: {
     type: String,
     required: true,
+  },
+  // restrict input option
+  status: {
+    type: String,
+    enum: ["active", "inactive"],
+  },
+
+  // restrict input option + default value
+  role: {
+    type: String,
+    enum: ["user", "admin"],
+    default: "user",
   },
 });
 
