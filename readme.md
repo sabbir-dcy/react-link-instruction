@@ -808,17 +808,6 @@ return (
 
 ---
 
-```js
-// usage
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCoffee } from "@fortawesome/free-solid-svg-icons";
-
-return (
-  <button>
-    <FontAwesomeIcon icon={faCoffee} />
-  </button>
-);
-```
 
 \
 &nbsp;
