@@ -228,15 +228,15 @@ export const auth = getAuth(app);
 ```
 
 - create `.env.local` inside root folder of the project
-- copy the code bellow and replace `secret-key-from-firebase` with actual key
+- copy the code bellow and replace `all dummys` with actual key
 
 ```
-REACT_APP_apiKey=secret-key-from-firebase
-REACT_APP_authDomain=secret-key-from-firebase
-REACT_APP_projectId=secret-key-from-firebase
-REACT_APP_storageBucket=secret-key-from-firebase
-REACT_APP_messagingSenderId=secret-key-from-firebase
-REACT_APP_appId=secret-key-from-firebase
+REACT_APP_apiKey=dummyKey
+REACT_APP_authDomain=dummyDomain
+REACT_APP_projectId=dummyId
+REACT_APP_storageBucket=dummyBucket
+REACT_APP_messagingSenderId=dummySenderId
+REACT_APP_appId=dummy
 ```
 
 \
