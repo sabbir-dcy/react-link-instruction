@@ -975,7 +975,7 @@ app.listen(port, () => console.log("listening to port", port));
 - then ->
 
 ```bash
-yarn add express mongoose dotenv cors
+yarn add express mongoose dotenv cors jsonwebtoken
 ```
 
 ```js
@@ -986,8 +986,9 @@ const cors = require("cors");
 const routeNameHandler = require("./routeNameHandler.js");
 require("dotenv").config();
 
+uri = "mongodbcluster uri";
 mongoose
-  .connect("mongodb://localhost/databaseName")
+  .connect(uri || "mongodb://localhost/databaseName")
   .then(() => console.log("connection successful"))
   .catch((err) => console.log(err));
 
