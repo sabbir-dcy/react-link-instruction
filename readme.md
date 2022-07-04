@@ -5,6 +5,7 @@
 - [install firebase | heroku](#firebase-install)
 
 # client packages ||
+
 - [create react app](#create-react-app)
 - [Tailwind and daisyui](#tailwind)
 - [firebase integration](#firebase-integration)
@@ -136,8 +137,6 @@ code .
 yarn run dev #or for local area network access
 yarn run dev --host
 ```
-
-
 
 ## [tailwind](https://tailwindcss.com/docs/guides/create-react-app)
 
@@ -808,7 +807,6 @@ return (
 
 ---
 
-
 \
 &nbsp;
 
@@ -845,6 +843,31 @@ export default function App() {
 
 ---
 
+- ### day picker css
+  1. create a css file in src folder `daypicker.css`.
+  2. import that into App.js `import './daypicker.css' `
+
+```css
+.rdp-day_selected:not([disabled]) {
+  color: white;
+  background-color: #0fcfec;
+}
+
+.rdp-day_selected:focus:not([disabled]) {
+  background-color: #0fcfec;
+  border: 2px solid rgb(138, 238, 252);
+}
+
+.rdp-day_selected:hover:not([disabled]) {
+  background-color: #19d3ae;
+  border: 2px solid rgb(152, 255, 215);
+}
+.rdp-button:active:not([disabled]) {
+  border: 2px solid #19d3ae;
+  background-color: #bafff1;
+}
+```
+
 ## image upload
 
 ```js
@@ -871,31 +894,6 @@ async function handle() {
 &nbsp;
 
 ---
-
-- ### day picker css
-  1. create a css file in src folder `daypicker.css`.
-  2. import that into App.js `import './daypicker.css' `
-
-```css
-.rdp-day_selected:not([disabled]) {
-  color: white;
-  background-color: #0fcfec;
-}
-
-.rdp-day_selected:focus:not([disabled]) {
-  background-color: #0fcfec;
-  border: 2px solid rgb(138, 238, 252);
-}
-
-.rdp-day_selected:hover:not([disabled]) {
-  background-color: #19d3ae;
-  border: 2px solid rgb(152, 255, 215);
-}
-.rdp-button:active:not([disabled]) {
-  border: 2px solid #19d3ae;
-  background-color: #bafff1;
-}
-```
 
 # server
 
