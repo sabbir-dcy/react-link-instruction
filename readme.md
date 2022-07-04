@@ -182,7 +182,7 @@ module.exports = {
 };
 ```
 
-- at index.css ->
+- below code at index.css ->
 
 ```css
 @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
@@ -190,6 +190,10 @@ module.exports = {
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  font-family: "inter", sans-serif;
+}
 ```
 
 \
@@ -748,9 +752,14 @@ if (isLoading) return 'Loading...'
 
 -------------------------------------------------------------------
 //using fetch
-const { isLoading, error, data,refetch } = useQuery('repoData', () =>
+const { isLoading, error, data,refetch } = useQuery('data', () =>
   fetch('https://api.github.com/repos/tannerlinsley/react-query').then((res) =>
     console.log(res.json())
+  )
+)
+// with dependency
+const {isLoading, error, data, refetch } = useQuery(['data', dependency], () => axios('https://api.github.com/repos/tannerlinsley/react-query').then((res) =>
+    console.log(res)
   )
 )
 ```
@@ -940,7 +949,6 @@ app.listen(port, () => console.log("listening to port", port));
 ```
 
 \
-
 &nbsp;
 
 ---
