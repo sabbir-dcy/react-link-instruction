@@ -73,6 +73,9 @@ yarn global add nodemon
 
 - better comments
 - es7+react/redux native snippets
+- react extension pack by rajbir
+- tailwindcss intellisnense
+- markdown all in one
 - auto rename tag
 - material icon theme
 - prettier code formatter
