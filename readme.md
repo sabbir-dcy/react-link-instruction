@@ -548,6 +548,7 @@ app.get("/services", (req, res) => {
 const handleDelete = () => {
   axios
     .delete(`http://localhost:5000/services/${1}`, {
+      // delete method takes body inside data object
       data: {
         service: "body from delete",
       },
